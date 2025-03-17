@@ -1,0 +1,9 @@
+.ab {
+    color: violet;
+    margin-top: 12vh;
+    transform: scale(1.4)
+}
+
+mat-icon {
+    transform: scale(1.1);
+}

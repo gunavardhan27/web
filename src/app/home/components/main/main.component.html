@@ -1,0 +1,7 @@
+<div class="flex flex-row h-screen text-white w-full">
+    <app-menu class="flex basis-1/12" (eventEmit)="logout()"></app-menu>
+    <app-shared-interface class="flex basis-1/4 bg-[#343c46] pt-[6vh] p-3"></app-shared-interface>
+    <app-messages class="flex basis-2/3 bg-[#303841]"></app-messages>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,35 @@
+<div class="w-full h-screen flex flex-row items-center justify-center text-white">
+    <div class="bg-gray-500 bg-opacity-50 p-9 rounded-xl w-[500px]">
+        <div class="w-[60%] mb-2.5">
+            <h1 class="font-bold text-xl">Welcome Back!</h1>
+            <p class="text-sm text-gray-300">Enter you details to sign in to your account</p>
+        </div>
+        <form [formGroup]="userForm" class="w-full">
+            <div class="w-full flex flex-col items-start justify-center gap-1.5">
+                <mat-label for="username">Username</mat-label>
+                <input type="text" name="username" placeholder="Enter username" formControlName="username"
+                    class="border border-white p-2 rounded-lg w-full text-sm" />
+                <mat-error class="text-red-400 text-sm"
+                    *ngIf="userForm.controls['username'].touched && userForm.controls['username'].invalid">
+                    enter valid username
+                </mat-error>
+
+
+            </div>
+            <div class="w-full flex flex-col items-start justify-center gap-1.5 mt-3">
+                <mat-label mandatory>Password</mat-label>
+                <input type="password" name="password" placeholder="Enter password" formControlName="password"
+                    class="border border-white p-2 rounded-lg w-full text-sm" />
+                <mat-error class="text-red-400 text-sm"
+                    *ngIf="userForm.controls['password'].touched && userForm.controls['password'].invalid">
+                    enter valid password
+                </mat-error>
+            </div>
+            <button type="submit" [disabled]="userForm.invalid"
+                class="bg-blue-500 w-full text-center mt-4 rounded-full p-2 text-md" (click)="login()">Login</button>
+        </form>
+        <p class="text-center text-gray-400 text-sm mt-2">Don't have an Account? <a class="text-blue-400"
+                routerLink="/auth/register">Register</a>
+        </p>
+    </div>
+</div>
