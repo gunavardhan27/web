@@ -6,6 +6,8 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { SharedInterfaceComponent } from './components/shared-interface/shared-interface.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AuthenticationService } from '../authentication/services/authentication.service';
+import { MlService } from './services/ml.service';
+import { provideHttpClient } from '@angular/common/http';
 
 
 
@@ -19,6 +21,6 @@ import { AuthenticationService } from '../authentication/services/authentication
     SharedInterfaceComponent,
     MenuComponent
   ],
-  providers: [AuthenticationService]
+  providers: [AuthenticationService,MlService,provideHttpClient()]
 })
 export class HomeModule { }
