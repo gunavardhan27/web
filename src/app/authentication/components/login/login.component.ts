@@ -19,6 +19,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class LoginComponent {
   userForm!: FormGroup
+  errorLog: boolean = false
   constructor(private authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) {
     this.userForm = this.formBuilder.group({
       username: ['', [Validators.required]],
@@ -35,8 +36,9 @@ export class LoginComponent {
           this.router.navigate(['/home'])
         }
         else {
-          alert(res.error)
-          this.router.navigate(['/auth/register'])
+          //alert(res.error)
+          this.errorLog = true
+          //this.router.navigate(['/auth/register'])
         }
       }, error: (err) => {
         console.log(err)

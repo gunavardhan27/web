@@ -1,0 +1,22 @@
+.modal {
+    margin-top: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    width: 30%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 2%;
+}
+
+.parent-contianer {
+    background-color: grey;
+    overflow: hidden;
+    z-index: 3;
+}
