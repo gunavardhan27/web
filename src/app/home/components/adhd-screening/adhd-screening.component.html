@@ -1,0 +1,137 @@
+<app-nav-bar></app-nav-bar>
+<div
+  class="mt-[50px] bg-blue-100 p-7 flex flex-col items-center min-h-screen gap-7"
+>
+  <div class="text-3xl font-bold text-center">Enter Details Below</div>
+  <div class="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <h2 class="text-2xl font-bold mb-4 text-center">SRS Form</h2>
+
+    <form
+      [formGroup]="adhdForm"
+      (ngSubmit)="onSubmit()"
+      class="space-y-4 min-w-[400px]"
+    >
+      <div *ngFor="let field of adhdForm.controls | keyvalue">
+        <label class="block font-medium mb-1">{{
+          field.key.replace("_", " ")
+        }}</label>
+        <input
+          type="number"
+          formControlName="{{ field.key }}"
+          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300"
+          required
+        />
+        <div
+          *ngIf="field.value.invalid && field.value.touched"
+          class="text-red-500 text-sm"
+        >
+          Invalid input (0-400 required).
+        </div>
+      </div>
+
+      <button
+        [disabled]="adhdForm.invalid"
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition disabled:bg-gray-800 disabled:text-gray-500"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  <!-- <h1 class="text-center text-4xl ">Response</h1> -->
+  @if(response){
+    <div class="w-[80%] bg-white p-5 rounded-lg">
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADHD Reading & Learning Strategies</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+  <div class="max-w-4xl mx-auto">
+    <span class="flex flex-row gap-3">
+        <p class="text-3xl">📖</p>
+        <h1 class="text-3xl mb-6 font-bold bg-clip-text text-transparent bg-gradient-to-r
+        from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400"> Best Reading & Learning Strategies for ADHD</h1>
+    </span>
+
+
+    <!-- Reading Strategies Section -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">📚 Best Reading Strategies</h2>
+
+      <!-- Whisper Reading -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">🔊 Whisper Reading (Subvocalization Control)</h3>
+        <p class="text-gray-700">Research shows whispering words while reading improves focus and reduces distractions.</p>
+        <p class="text-gray-600 font-medium">📌 Implementation: Add a "Whisper Mode" where kids can repeat words after a soft AI-generated voice.</p>
+      </div>
+
+      <!-- Focus Framing -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">🖼 Focus Framing</h3>
+        <p class="text-gray-700">ADHD readers lose track between paragraphs.</p>
+        <p class="text-gray-600 font-medium">📌 Solution: A "Reading Window" mode that highlights only a small portion of text at a time.</p>
+      </div>
+
+      <!-- Color-Coded Syntax Reading -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">🎨 Color-Coded Syntax Reading</h3>
+        <p class="text-gray-700">ADHD brains process color faster than plain text.</p>
+        <p class="text-gray-600 font-medium">📌 Solution: AI highlights sentence structure (Subjects = Blue, Verbs = Red, Objects = Green).</p>
+      </div>
+
+      <!-- Hyperlink Engagement -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">🔗 Hyperlink Engagement</h3>
+        <p class="text-gray-700">ADHD learners stay engaged with choice-driven navigation.</p>
+        <p class="text-gray-600 font-medium">📌 Solution: Make reading interactive by allowing kids to choose different "paths" or story variations.</p>
+      </div>
+
+      <!-- Kinesthetic Reading -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">👐 Kinesthetic Reading</h3>
+        <p class="text-gray-700">ADHD learners benefit from physical movement while reading.</p>
+        <p class="text-gray-600 font-medium">📌 Implementation: Add an on-screen "tap-to-read" feature where words appear only when tapped.</p>
+      </div>
+    </section>
+
+    <!-- Learning Strategies Section -->
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">🎓 Best Learning Methods</h2>
+
+      <!-- Dual-Task Learning -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">🎭 Dual-Task Learning</h3>
+        <p class="text-gray-700">ADHD brains focus better when engaging two senses at once (e.g., movement + reading).</p>
+        <p class="text-gray-600 font-medium">📌 Implementation: Suggest "Bounce & Read" (sit on an exercise ball while reading) or "Walk & Listen" (audiobooks while moving).</p>
+      </div>
+
+      <!-- Time Boxing -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">⏳ Time Boxing</h3>
+        <p class="text-gray-700">ADHD kids struggle with open-ended study time.</p>
+        <p class="text-gray-600 font-medium">📌 Solution: A built-in "Sprint Timer" (Short bursts: 10-min read → 2-min game → 10-min read).</p>
+      </div>
+
+      <!-- Interactive Summarization -->
+      <div class="bg-white p-5 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-bold text-blue-600">📝 Interactive Summarization</h3>
+        <p class="text-gray-700">Instead of writing summaries, let ADHD kids use drag & drop key points (visual synthesis method).</p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
+
+      </div>
+  }
+  @else {
+    <div>idk</div>
+  }
+  
+</div>

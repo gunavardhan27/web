@@ -1,0 +1,19 @@
+<div class="bg-white fixed h-fit pt-1 px-12 w-full top-0 border-b-1 border-gray-400">
+    <div class="py-2 flex flex-row items-center justify-end gap-4">
+        <div class="setting flex flex-row items-center justify-center gap-1">
+            <label class="switch">
+              <input type="checkbox" (change)="toggleDyslexiaMode($event)">
+              <span class="slider round"></span>
+            </label>
+            <span>Dyslexia-Friendly</span>
+        </div>
+        <div class="setting flex flex-row items-center justify-center gap-1">
+            <label class="switch">
+              <input type="checkbox" (change)="toggleCalmMode($event)">
+              <span class="slider round"></span>
+            </label>
+            <span>Calm Mode</span>
+        </div>
+        <div tabindex="0" (keydown.enter)="toggleLogout()" (click)="toggleLogout()"><mat-icon style="font-size: 20px;">logout</mat-icon></div>
+    </div>
+</div>

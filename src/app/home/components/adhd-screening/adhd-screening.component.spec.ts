@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SharedInterfaceComponent } from './shared-interface.component';
+import { AdhdScreeningComponent } from './adhd-screening.component';
 
-describe('SharedInterfaceComponent', () => {
-  let component: SharedInterfaceComponent;
-  let fixture: ComponentFixture<SharedInterfaceComponent>;
+describe('AdhdScreeningComponent', () => {
+  let component: AdhdScreeningComponent;
+  let fixture: ComponentFixture<AdhdScreeningComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedInterfaceComponent]
+      imports: [AdhdScreeningComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SharedInterfaceComponent);
+    fixture = TestBed.createComponent(AdhdScreeningComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
