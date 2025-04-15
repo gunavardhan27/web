@@ -14,6 +14,7 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
+  accessibilityMenu = false
   cardData = [{
     iconName: '',
     title:'Interactive Reading',
@@ -54,5 +55,12 @@ export class MainComponent {
 
   gotoScreening(){
     this.router.navigate(['/home/screening'])
+  }
+  toggleAccessibilityMenu() {
+    console.log('avc')
+    this.accessibilityMenu = !this.accessibilityMenu
+  }
+  redirectToGames() {
+    this.router.navigate(['/home/games'])
   }
 }

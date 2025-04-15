@@ -1,28 +1,150 @@
 <app-nav-bar (logoutEvent)="logout()"></app-nav-bar>
-<!-- <div (click)="getAdhdResponse()" tabindex="0" class="mt-12 p-2 border-1 border-solid border-black">get adhd results</div> -->
-<div class="bg-blue-100 p-6 mt-[50px] flex flex-col items-center justify-center gap-12 min-h-screen">
-    <h1 class="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r
-     from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400">Reading Abilities Screening Tool</h1>
-    <div class="text-xl">A friendly way to understand your unique style and get personalized learning recommendations</div>
-    <div class="flex flex-row items-center justify-center gap-5">
-        <div *ngFor="let data of cardData">
-            <div class="flex flex-col p-7 gap-4 items-center justify-center bg-white border-1 border-gray-600 max-w-[350px] h-[300px] rounded-lg">
-                <img src="" />
-                <div class="text-xl font-semibold text-center">{{data.title}}</div>
-                <div class="text-[16px] text-center">{{data.content}}</div>
-            </div>
+
+
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Discover Natural Learning Strengths</h1>
+      <p>Our platform helps identify and celebrate cognitive diversity through engaging, strength-based activities for children and valuable insights for caregivers.</p>
+      <a href="#path-selection" class="btn btn-large">Start Your Journey</a>
+      
+      <div class="hero-trust">
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4A9D9C" stroke-width="2"/>
+            <path d="M8 12L11 15L16 9" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Privacy-Focused</span>
         </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4A9D9C" stroke-width="2"/>
+            <path d="M8 12L11 15L16 9" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Non-Diagnostic</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4A9D9C" stroke-width="2"/>
+            <path d="M8 12L11 15L16 9" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Strength-Based</span>
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4A9D9C" stroke-width="2"/>
+            <path d="M8 12L11 15L16 9" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Inclusive Design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Path Selection -->
+    <section id="path-selection" class="path-selection">
+      <div class="path-card" id="caregiver-path">
+        <div class="path-icon">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="#4A9D9C" stroke-width="2"/>
+            <path d="M20 22C20 17.5817 16.4183 14 12 14C7.58172 14 4 17.5817 4 22" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>For Caregivers</h3>
+        <p>Complete a brief questionnaire to gain insights into your child's cognitive strengths and learning style.</p>
+        <a href="#" class="btn">Begin Questionnaire</a>
+      </div>
+      
+      <div class="path-card" id="child-path">
+        <div class="path-icon">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="#4A9D9C" stroke-width="2"/>
+            <path d="M17 22H7C5.34315 22 4 20.6569 4 19V17C4 14.2386 6.23858 12 9 12H15C17.7614 12 20 14.2386 20 17V19C20 20.6569 18.6569 22 17 22Z" stroke="#4A9D9C" stroke-width="2"/>
+            <path d="M10 9L14 9" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>For Kids</h3>
+        <p>Play fun games designed to explore your natural thinking style and unique cognitive strengths.</p>
+        <button class="btn" (click)="redirectToGames()">Start Playing</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>NeuroDiversity</h3>
+          <p>Celebrating cognitive differences and empowering children to discover their natural learning strengths.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Platform</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Approach</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Learning Guides</a></li>
+            <li><a href="#">Parent Resources</a></li>
+            <li><a href="#">Teacher Tools</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 NeuroDiversity Discovery Platform. All rights reserved.</p>
+      </div>
     </div>
-    <button (click)="gotoScreening()" class="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background
-    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-    disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-11 bg-gradient-to-r
-     from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-lg px-8 py-6 rounded-full 
-     shadow-lg hover:shadow-xl transition-all duration-300">Start Screening<svg xmlns="http://www.w3.org/2000/svg" width="24" 
-     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
-     stroke-linejoin="round" class="lucide lucide-volume2 w-6 h-6 ml-2">
-     <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"></path>
-     <path d="M16 9a5 5 0 0 1 0 6"></path>
-     <path d="M19.364 18.364a9 9 0 0 0 0-12.728"></path></svg></button>
-     <p class="text-sm text-gray-600">Note: This tool provides learning suggestions only and is not a medical diagostic tool</p>
-</div>
+  </footer>
+
+  <!-- Accessibility Controls -->
+  <div class="accessibility-controls">
+    <div class="accessibility-toggle" (click)="toggleAccessibilityMenu()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2"/>
+        <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="white" stroke-width="2"/>
+        <path d="M12 12V16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M9 20L12 16L15 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="accessibility-menu" [ngStyle]="{ 'display': accessibilityMenu ? 'block' : 'none' }" id="accessibility-menu">
+      <div class="accessibility-option">
+        <input type="checkbox" id="high-contrast">
+        <label for="high-contrast">High Contrast</label>
+      </div>
+      <div class="accessibility-option">
+        <input type="checkbox" id="larger-text">
+        <label for="larger-text">Larger Text</label>
+      </div>
+      <div class="accessibility-option">
+        <input type="checkbox" id="reduce-motion">
+        <label for="reduce-motion">Reduce Motion</label>
+      </div>
+      <div class="accessibility-option">
+        <input type="checkbox" id="screen-reader">
+        <label for="screen-reader">Screen Reader Mode</label>
+      </div>
+    </div>
+  </div>
+
 <router-outlet></router-outlet>

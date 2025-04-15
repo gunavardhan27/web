@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun Activities - Neurodiversity Discovery Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    :root {
+      --primary: #4A9D9C;
+      --secondary: #E6B655;
+      --accent: #9C6DD8;
+      --neutral-light: #F7F7F7;
+      --neutral-medium: #E0E0E0;
+      --neutral-dark: #767676;
+      --background: #F5F8FA;
+      --font-primary: 'Lexend', 'Open Sans', sans-serif;
+      --border-radius: 12px;
+      --box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--background);
+      color: #333;
+      line-height: 1.5;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 16px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-block;
+      padding: 16px 24px;
+      min-width: 200px;
+      height: 60px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: var(--transition);
+      font-family: var(--font-primary);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .btn-play {
+      background-color: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      min-width: auto;
+      height: auto;
+      font-size: 16px;
+      border-radius: var(--border-radius);
+    }
+
+    /* Header */
+    header {
+      padding: 16px 0;
+    }
+
+    .back-button {
+      display: flex;
+      align-items: center;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-button svg {
+      margin-right: 8px;
+    }
+
+    /* Welcome Screen */
+    .welcome-screen {
+      text-align: center;
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+    }
+
+    .mascot-container {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .welcome-text {
+      margin-bottom: 32px;
+    }
+
+    .welcome-text h1 {
+      margin-bottom: 16px;
+    }
+
+    .welcome-subtext {
+      font-size: 20px;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .audio-button {
+      width: 44px;
+      height: 44px;
+      background-color: var(--neutral-light);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px;
+      transition: var(--transition);
+    }
+
+    .audio-button:hover {
+      background-color: var(--neutral-medium);
+    }
+
+    .audio-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .game-count {
+      font-size: 16px;
+      color: var(--neutral-dark);
+      margin-top: 16px;
+    }
+
+    /* Game Selection Hub */
+    .game-hub {
+      padding: 32px 16px;
+      display: none;
+    }
+
+    .game-hub.active {
+      display: block;
+    }
+
+    .progress-indicator {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .progress-circles {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .progress-circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      margin: 0 8px;
+      background-color: var(--neutral-medium);
+    }
+
+    .progress-circle.filled {
+      background-color: var(--primary);
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .game-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 24px;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .game-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 16px;
+    }
+
+    .game-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .game-description {
+      font-size: 16px;
+      color: var(--neutral-dark);
+      margin-bottom: 16px;
+    }
+
+    .game-time {
+      font-size: 14px;
+      color: var(--neutral-dark);
+      margin-bottom: 16px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    /* Accessibility Toggle */
+    .accessibility-toggle {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      z-index: 100;
+    }
+
+    .accessibility-button {
+      width: 44px;
+      height: 44px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--box-shadow);
+    }
+
+    .accessibility-menu {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 16px;
+      box-shadow: var(--box-shadow);
+      width: 200px;
+      display: none;
+    }
+
+    .accessibility-menu.active {
+      display: block;
+    }
+
+    .accessibility-option {
+      margin-bottom: 8px;
+    }
+
+    /* Mascot Animation */
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .mascot {
+      animation: wave 2s infinite ease-in-out;
+      transform-origin: bottom center;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header with Back Button -->
+    <header>
+      <a href="#" class="back-button" id="back-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 19L5 12L12 5" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Home
+      </a>
+    </header>
+
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" id="welcome-screen">
+      <div class="mascot-container">
+        <svg class="mascot" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mascot: Blue/Teal Fox Character -->
+          <circle cx="100" cy="100" r="85" fill="#E6F7F7"/>
+          <!-- Body -->
+          <ellipse cx="100" cy="110" rx="60" ry="55" fill="#4A9D9C"/>
+          <!-- Head -->
+          <circle cx="100" cy="70" r="40" fill="#4A9D9C"/>
+          <!-- Eyes -->
+          <circle cx="85" cy="65" r="8" fill="white"/>
+          <circle cx="115" cy="65" r="8" fill="white"/>
+          <circle cx="85" cy="65" r="4" fill="#333"/>
+          <circle cx="115" cy="65" r="4" fill="#333"/>
+          <!-- Nose -->
+          <circle cx="100" cy="75" r="5" fill="#333"/>
+          <!-- Smile -->
+          <path d="M85 85C90 95 110 95 115 85" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+          <!-- Ears -->
+          <path d="M70 40C60 30 55 20 60 10C70 20 80 20 70 40Z" fill="#4A9D9C"/>
+          <path d="M130 40C140 30 145 20 140 10C130 20 120 20 130 40Z" fill="#4A9D9C"/>
+          <!-- Inner Ears -->
+          <path d="M70 35C65 25 62 18 65 12C72 20 75 20 70 35Z" fill="#E6B655"/>
+          <path d="M130 35C135 25 138 18 135 12C128 20 125 20 130 35Z" fill="#E6B655"/>
+          <!-- Tail -->
+          <path d="M40 110C20 100 10 120 20 130C30 140 50 130 40 110Z" fill="#4A9D9C"/>
+        </svg>
+      </div>
+
+      <div class="welcome-text">
+        <h1>Hi there! Ready for some fun activities?</h1>
+        <div class="audio-toggle">
+          <button class="audio-button" id="welcome-audio" aria-label="Listen to welcome message">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.54 8.46C16.4774 9.39764 17.004 10.6692 17.004 12C17.004 13.3308 16.4774 14.6024 15.54 15.54" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <p class="welcome-subtext">Let's play 4 quick games to discover how your amazing brain likes to learn!</p>
+      </div>
+
+      <button class="btn" id="lets-play">Let's Play!</button>
+      <p class="game-count">4 fun activities • About 10 minutes</p>
+    </div>
+
+    <!-- Game Selection Hub -->
+    <div class="game-hub" id="game-hub">
+      <h1>Choose a Fun Activity!</h1>
+      
+      <div class="progress-indicator">
+        <p>Your journey: <span id="completed-count">0</span> of 4 activities completed</p>
+        <div class="progress-circles">
+          <div class="progress-circle" id="progress-1"></div>
+          <div class="progress-circle" id="progress-2"></div>
+          <div class="progress-circle" id="progress-3"></div>
+          <div class="progress-circle" id="progress-4"></div>
+        </div>
+      </div>
+
+      <div class="game-grid">
+        <!-- Game 1 -->
+        <div class="game-card">
+          <svg class="game-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Color Palette Icon -->
+            <circle cx="40" cy="40" r="36" fill="#F7F7F7" stroke="#4A9D9C" stroke-width="2"/>
+            <circle cx="30" cy="30" r="10" fill="#E6B655"/>
+            <circle cx="50" cy="30" r="10" fill="#9C6DD8"/>
+            <circle cx="30" cy="50" r="10" fill="#4A9D9C"/>
+            <circle cx="50" cy="50" r="10" fill="#FF7D7D"/>
+            <rect x="25" y="25" width="30" height="5" fill="white"/>
+          </svg>
+          <h3 class="game-title">Color Challenge</h3>
+          <p class="game-description">Match the color you see, not the word you read!</p>
+          <p class="game-time">2-3 minutes</p>
+          <div class="card-footer">
+            <button class="audio-button" aria-label="Listen to game description">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.54 8.46C16.4774 9.39764 17.004 10.6692 17.004 12C17.004 13.3308 16.4774 14.6024 15.54 15.54" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="btn btn-play">Play</button>
+          </div>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="game-card">
+          <svg class="game-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Grid/Squares Icon -->
+            <rect x="10" y="10" width="60" height="60" rx="4" fill="#F7F7F7" stroke="#4A9D9C" stroke-width="2"/>
+            <rect x="16" y="16" width="14" height="14" rx="2" fill="#E6B655"/>
+            <rect x="33" y="16" width="14" height="14" rx="2" fill="#4A9D9C"/>
+            <rect x="50" y="16" width="14" height="14" rx="2" fill="#9C6DD8"/>
+            <rect x="16" y="33" width="14" height="14" rx="2" fill="#9C6DD8"/>
+            <rect x="33" y="33" width="14" height="14" rx="2" fill="#E6B655"/>
+            <rect x="50" y="33" width="14" height="14" rx="2" fill="#4A9D9C"/>
+            <rect x="16" y="50" width="14" height="14" rx="2" fill="#4A9D9C"/>
+            <rect x="33" y="50" width="14" height="14" rx="2" fill="#9C6DD8"/>
+            <rect x="50" y="50" width="14" height="14" rx="2" fill="#E6B655"/>
+          </svg>
+          <h3 class="game-title">Memory Squares</h3>
+          <p class="game-description">Remember the pattern and tap in the right order!</p>
+          <p class="game-time">2-3 minutes</p>
+          <div class="card-footer">
+            <button class="audio-button" aria-label="Listen to game description">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.54 8.46C16.4774 9.39764 17.004 10.6692 17.004 12C17.004 13.3308 16.4774 14.6024 15.54 15.54" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="btn btn-play">Play</button>
+          </div>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="game-card">
+          <svg class="game-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Connected Dots/Pattern Icon -->
+            <circle cx="40" cy="40" r="36" fill="#F7F7F7" stroke="#4A9D9C" stroke-width="2"/>
+            <circle cx="20" cy="20" r="6" fill="#E6B655"/>
+            <circle cx="40" cy="20" r="6" fill="#9C6DD8"/>
+            <circle cx="60" cy="20" r="6" fill="#E6B655"/>
+            <circle cx="20" cy="40" r="6" fill="#9C6DD8"/>
+            <circle cx="40" cy="40" r="6" fill="#E6B655"/>
+            <circle cx="60" cy="40" r="6" fill="#9C6DD8"/>
+            <circle cx="20" cy="60" r="6" fill="#E6B655"/>
+            <circle cx="40" cy="60" r="6" fill="#9C6DD8"/>
+            <circle cx="60" cy="60" r="6" fill="#E6B655"/>
+            <line x1="20" y1="20" x2="40" y2="20" stroke="#4A9D9C" stroke-width="2"/>
+            <line x1="40" y1="20" x2="60" y2="20" stroke="#4A9D9C" stroke-width="2"/>
+            <line x1="60" y1="20" x2="60" y2="40" stroke="#4A9D9C" stroke-width="2"/>
+            <line x1="60" y1="40" x2="40" y2="40" stroke="#4A9D9C" stroke-width="2"/>
+            <line x1="40" y1="40" x2="20" y2="60" stroke="#4A9D9C" stroke-width="2"/>
+          </svg>
+          <h3 class="game-title">Pattern Finder</h3>
+          <p class="game-description">Figure out what comes next in the pattern!</p>
+          <p class="game-time">2-3 minutes</p>
+          <div class="card-footer">
+            <button class="audio-button" aria-label="Listen to game description">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.54 8.46C16.4774 9.39764 17.004 10.6692 17.004 12C17.004 13.3308 16.4774 14.6024 15.54 15.54" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="btn btn-play">Play</button>
+          </div>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="game-card">
+          <svg class="game-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Magnifying Glass Icon -->
+            <circle cx="40" cy="40" r="36" fill="#F7F7F7" stroke="#4A9D9C" stroke-width="2"/>
+            <circle cx="35" cy="35" r="15" fill="transparent" stroke="#4A9D9C" stroke-width="3"/>
+            <line x1="46" y1="46" x2="60" y2="60" stroke="#4A9D9C" stroke-width="4" stroke-linecap="round"/>
+            <!-- Symbols -->
+            <circle cx="20" cy="20" r="4" fill="#E6B655"/>
+            <rect x="27" y="27" width="8" height="8" fill="#9C6DD8"/>
+            <polygon points="60,25 55,35 65,35" fill="#E6B655"/>
+            <polygon points="25,60 20,50 30,50" fill="#E6B655"/>
+          </svg>
+          <h3 class="game-title">Symbol Detective</h3>
+          <p class="game-description">Find all the matching symbols as quick as you can!</p>
+          <p class="game-time">2-3 minutes</p>
+          <div class="card-footer">
+            <button class="audio-button" aria-label="Listen to game description">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.54 8.46C16.4774 9.39764 17.004 10.6692 17.004 12C17.004 13.3308 16.4774 14.6024 15.54 15.54" stroke="#4A9D9C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="btn btn-play">Play</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accessibility Toggle -->
+  <div class="accessibility-toggle">
+    <button class="accessibility-button" id="accessibility-toggle" aria-label="Accessibility options">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2"/>
+        <path d="M12 8V12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 16H12.01" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="accessibility-menu" id="accessibility-menu">
+      <div class="accessibility-option">
+        <input type="checkbox" id="larger-text">
+        <label for="larger-text">Larger Text</label>
+      </div>
+      <div class="accessibility-option">
+        <input type="checkbox" id="high-contrast">
+        <label for="high-contrast">High Contrast</label>
+      </div>
+      <div class="accessibility-option">
+        <input type="checkbox" id="reduce-motion" checked>
+        <label for="reduce-motion">Reduce Motion</label>
+      </div>
+      <div class="accessibility-option">
+        <input type="checkbox" id="read-aloud" checked>
+        <label for="read-aloud">Read Aloud</label>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // DOM Elements
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const gameHub = document.getElementById('game-hub');
+    const letsPlayBtn = document.getElementById('lets-play');
+    const backButton = document.getElementById('back-button');
+    const accessibilityToggle = document.getElementById('accessibility-toggle');
+    const accessibilityMenu = document.getElementById('accessibility-menu');
+    const welcomeAudioBtn = document.getElementById('welcome-audio');
+    
+    // Game completion tracking
+    let completedGames = 0;
+    const completedCount = document.getElementById('completed-count');
+    const progressCircles = [
+      document.getElementById('progress-1'),
+      document.getElementById('progress-2'),
+      document.getElementById('progress-3'),
+      document.getElementById('progress-4')
+    ];
+    
+    // Event Listeners
+    letsPlayBtn.addEventListener('click', () => {
+      welcomeScreen.style.display = 'none';
+      gameHub.classList.add('active');
+      
+      // Update the progress display
+      updateProgress();
+    });
+    
+    backButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (gameHub.classList.contains('active')) {
+        gameHub.classList.remove('active');
+        welcomeScreen.style.display = 'flex';
+      } else {
+        // Logic to navigate back to homepage will go here
+        console.log('Navigate back to homepage');
+      }
+    });
+    
+    accessibilityToggle.addEventListener('click', () => {
+      accessibilityMenu.classList.toggle('active');
+    });
+    
+    // Speech synthesis for welcome message
+    welcomeAudioBtn.addEventListener('click', () => {
+      const welcomeText = "Hi there! Ready for some fun activities? Let's play 4 quick games to discover how your amazing brain likes to learn!";
+      
+      if ('speechSynthesis' in window) {
+        const speech = new SpeechSynthesisUtterance(welcomeText);
+        speech.rate = 0.9; // Slightly slower rate for better comprehension
+        speech.pitch = 1.1; // Slightly higher pitch, good for children
+        window.speechSynthesis.speak(speech);
+      }
+    });
+    
+    // Audio buttons for game descriptions
+    document.querySelectorAll('.game-card .audio-button').forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        const gameDescriptions = [
+          "Color Challenge. Match the color you see, not the word you read! This game takes 2 to 3 minutes.",
+          "Memory Squares. Remember the pattern and tap in the right order! This game takes 2 to 3 minutes.",
+          "Pattern Finder. Figure out what comes next in the pattern! This game takes 2 to 3 minutes.",
+          "Symbol Detective. Find all the matching symbols as quick as you can! This game takes 2 to 3 minutes."
+        ];
+        
+        if ('speechSynthesis' in window) {
+          const speech = new SpeechSynthesisUtterance(gameDescriptions[index]);
+          speech.rate = 0.9;
+          speech.pitch = 1.1;
+          window.speechSynthesis.speak(speech);
+        }
+      });
+    });
+    
+    // Play buttons
+    document.querySelectorAll('.btn-play').forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        // Simulating game completion for demo
+        if (!progressCircles[index].classList.contains('filled')) {
+          completedGames++;
+          updateProgress();
+        }
+        
+        // In a real implementation, this would navigate to the actual game
+        alert(`Starting the ${['Color Challenge', 'Memory Squares', 'Pattern Finder', 'Symbol Detective'][index]} game!`);
+      });
+    });
+    
+    // Update progress display
+    function updateProgress() {
+      completedCount.textContent = completedGames;
+      
+      // Update progress circles
+      for (let i = 0; i < progressCircles.length; i++) {
+        if (i < completedGames) {
+          progressCircles[i].classList.add('filled');
+        } else {
+          progressCircles[i].classList.remove('filled');
+        }
+      }
+      
+      // Store completion status in localStorage
+      localStorage.setItem('completedGames', completedGames);
+    }
+    
+    // Load stored progress on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedProgress = localStorage.getItem('completedGames');
+      if (storedProgress) {
+        completedGames = parseInt(storedProgress);
+        updateProgress();
+      }
+      
+      // Check for accessibility preferences
+      // Continue from line 778 where the code was cut off
+      // Check for accessibility preferences
+      const reduceMotion = document.getElementById('reduce-motion');
+      if (reduceMotion.checked) {
+        document.querySelector('.mascot').style.animation = 'none';
+      }
+      
+      // Load any other accessibility preferences
+      const largerText = document.getElementById('larger-text');
+      const highContrast = document.getElementById('high-contrast');
+      const readAloud = document.getElementById('read-aloud');
+      
+      // Apply accessibility settings
+      if (localStorage.getItem('largerText') === 'true') {
+        largerText.checked = true;
+        document.body.style.fontSize = '22px';
+      }
+      
+      if (localStorage.getItem('highContrast') === 'true') {
+        highContrast.checked = true;
+        document.documentElement.classList.add('high-contrast');
+      }
+      
+      if (localStorage.getItem('reduceMotion') === 'true') {
+        reduceMotion.checked = true;
+        document.querySelector('.mascot').style.animation = 'none';
+      }
+      
+      if (localStorage.getItem('readAloud') === 'false') {
+        readAloud.checked = false;
+      }
+    });
+    
+    // Accessibility option event listeners
+    document.getElementById('larger-text').addEventListener('change', function() {
+      if (this.checked) {
+        document.body.style.fontSize = '22px';
+        localStorage.setItem('largerText', 'true');
+      } else {
+        document.body.style.fontSize = '18px';
+        localStorage.setItem('largerText', 'false');
+      }
+    });
+    
+    document.getElementById('high-contrast').addEventListener('change', function() {
+      if (this.checked) {
+        document.documentElement.classList.add('high-contrast');
+        localStorage.setItem('highContrast', 'true');
+      } else {
+        document.documentElement.classList.remove('high-contrast');
+        localStorage.setItem('highContrast', 'false');
+      }
+    });
+    
+    document.getElementById('reduce-motion').addEventListener('change', function() {
+      if (this.checked) {
+        document.querySelector('.mascot').style.animation = 'none';
+        localStorage.setItem('reduceMotion', 'true');
+      } else {
+        document.querySelector('.mascot').style.animation = 'wave 2s infinite ease-in-out';
+        localStorage.setItem('reduceMotion', 'false');
+      }
+    });
+    
+    document.getElementById('read-aloud').addEventListener('change', function() {
+      localStorage.setItem('readAloud', this.checked ? 'true' : 'false');
+    });
+    
+    // Add high contrast styles if needed
+    function applyHighContrast() {
+      const style = document.createElement('style');
+      style.id = 'high-contrast-styles';
+      style.textContent = `
+        :root {
+          --primary: #006666;
+          --secondary: #B38600;
+          --accent: #6A3DAA;
+          --background: #FFFFFF;
+          --neutral-dark: #333333;
+        }
+        
+        body {
+          background-color: #FFFFFF;
+          color: #000000;
+        }
+        
+        .btn {
+          background-color: #006666;
+          color: #FFFFFF;
+        }
+        
+        .game-card {
+          border: 2px solid #000000;
+        }
+        
+        .game-description, .game-time {
+          color: #333333;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    // Initialize high contrast if needed
+    if (document.getElementById('high-contrast').checked) {
+      applyHighContrast();
+    }
+    
+    // Close accessibility menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.accessibility-toggle') && accessibilityMenu.classList.contains('active')) {
+        accessibilityMenu.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

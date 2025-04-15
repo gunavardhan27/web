@@ -1,3 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss';
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+    --primary: #4A9D9C;
+    --secondary: #E6B655;
+    --accent: #9C6DD8;
+    --neutral-light: #F7F7F7;
+    --neutral-medium: #E0E0E0;
+    --neutral-dark: #767676;
+    --background: #F5F8FA;
+    --font-primary: 'Lexend', 'Open Sans', sans-serif;
+    --border-radius: 12px;
+  }
