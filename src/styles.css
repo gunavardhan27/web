@@ -2,14 +2,22 @@
 @import 'tailwindcss';
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
-:root {
-    --primary: #4A9D9C;
-    --secondary: #E6B655;
-    --accent: #9C6DD8;
-    --neutral-light: #F7F7F7;
-    --neutral-medium: #E0E0E0;
+
+  :root {
+    --primary: #4a9d9c;
+    --secondary: #e6b655;
+    --accent: #9c6dd8;
+    --neutral-light: #f7f7f7;
+    --neutral-medium: #e0e0e0;
     --neutral-dark: #767676;
-    --background: #F5F8FA;
-    --font-primary: 'Lexend', 'Open Sans', sans-serif;
+    --background: #f5f8fa;
+    --font-primary: "Lexend", "Open Sans", sans-serif;
     --border-radius: 12px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease-in-out;
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
   }

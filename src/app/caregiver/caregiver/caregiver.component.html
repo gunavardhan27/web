@@ -1,0 +1,827 @@
+<app-nav-bar></app-nav-bar>
+<div class="stepper-container">
+  <div class="step-indicators">
+    <div
+      class="step"
+      *ngFor="let step of steps; let i = index"
+      [class.active]="i === currentStep"
+      [class.completed]="i < currentStep"
+      (click)="setStep(i)"
+    >
+      <span class="circle">{{ i + 1 }}</span>
+      <span class="label">{{ step }}</span>
+    </div>
+  </div>
+  <body>
+    <main class="container">
+      <div
+        id="page-1"
+        class="module-page active content-container"
+        *ngIf="currentStep === 0"
+      >
+        <h1>Welcome to the Caregiver Assessment</h1>
+        <p>
+          We're excited to help you discover your child's unique learning
+          strengths and cognitive style. This journey is about understanding and
+          celebrating their natural abilities, not about diagnosing or labeling.
+        </p>
+
+        <div class="card">
+          <h3>What to Expect</h3>
+          <p>
+            This assessment will take approximately 10-15 minutes to complete.
+            You'll answer a series of questions about your child's behaviors,
+            preferences, and learning styles.
+          </p>
+          <div class="time-indicator">
+            <svg
+              class="time-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="#767676"
+                stroke-width="2"
+              />
+              <path
+                d="M12 6V12L16 14"
+                stroke="#767676"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>Estimated time: 10-15 minutes</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Benefits of This Assessment</h3>
+          <ul>
+            <li>Discover your child's natural cognitive strengths</li>
+            <li>Gain insights into their preferred learning style</li>
+            <li>Receive tailored strategies to support their development</li>
+            <li>
+              Create a personalized action plan based on their unique profile
+            </li>
+          </ul>
+        </div>
+
+        <div class="trust-indicators">
+          <div class="trust-item">
+            <svg
+              class="trust-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="#4A9D9C"
+                stroke-width="2"
+              />
+              <path
+                d="M8 12L11 15L16 9"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>Privacy-Focused</span>
+          </div>
+          <div class="trust-item">
+            <svg
+              class="trust-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="#4A9D9C"
+                stroke-width="2"
+              />
+              <path
+                d="M8 12L11 15L16 9"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>Non-Diagnostic</span>
+          </div>
+          <div class="trust-item">
+            <svg
+              class="trust-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="#4A9D9C"
+                stroke-width="2"
+              />
+              <path
+                d="M8 12L11 15L16 9"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>Strength-Based</span>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <div></div>
+          <!-- Empty div for flex alignment -->
+          <button class="btn btn-large" (click)="goToNextStep()">
+            Begin Assessment
+          </button>
+        </div>
+      </div>
+
+      <!-- 2nd -->
+
+      <div
+        id="page-2"
+        class="module-page active content-container"
+        *ngIf="currentStep === 1"
+      >
+        <h1>Information & Consent</h1>
+        <p>
+          Before we begin, we want to ensure you understand how we use the
+          information you provide and what to expect from this assessment.
+        </p>
+
+        <div class="card">
+          <h3>Important Information</h3>
+          <ul>
+            <li>
+              This assessment is <strong>not diagnostic</strong> and does not
+              identify disorders or conditions
+            </li>
+            <li>
+              Results focus on identifying cognitive strengths and learning
+              preferences
+            </li>
+            <li>
+              Information you provide is used only to generate personalized
+              insights
+            </li>
+            <li>
+              Your data is stored securely and never shared with third parties
+            </li>
+          </ul>
+        </div>
+
+        <div class="expandable" id="learn-more">
+          <div
+            class="expandable-header"
+            onclick="toggleExpandable('learn-more')"
+          >
+            <span class="expandable-title"
+              >Learn More About This Assessment</span
+            >
+            <span class="expandable-icon">▼</span>
+          </div>
+          <div class="expandable-content">
+            <p>
+              This assessment is based on research in cognitive development and
+              learning sciences. It helps identify patterns in how your child
+              processes information, solves problems, and engages with the world
+              around them.
+            </p>
+            <p>
+              Our approach is strength-based, meaning we focus on discovering
+              and enhancing natural abilities rather than identifying
+              deficiencies. The questions are designed to capture a holistic
+              view of your child's cognitive profile across multiple domains:
+            </p>
+            <ul>
+              <li>Information processing style</li>
+              <li>Environmental preferences</li>
+              <li>Social interaction patterns</li>
+              <li>Problem-solving approaches</li>
+              <li>Creativity and expression</li>
+            </ul>
+            <p>
+              While this tool can provide valuable insights, it should be
+              considered complementary to—not a replacement for—professional
+              assessment if you have specific concerns about your child's
+              development.
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              id="consent-checkbox"
+              (click)="toggleBox()"
+              aria-label="I consent to proceed with the assessment"
+            />
+            <label for="consent-checkbox"
+              >I understand this is not a diagnostic tool and consent to proceed
+              with the assessment</label
+            >
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="goToPreviousStep()">
+            Back
+          </button>
+          <button
+            id="consent-continue"
+            class="btn"
+            [disabled]="isDisabled"
+            (click)="goToNextStep()"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. SRS QUESTIONNAIRE INTERFACE -->
+      <div
+        id="page-3"
+        class="module-page active content-container"
+        *ngIf="currentStep === 2"
+      >
+        <h1>Strengths & Preferences Questionnaire</h1>
+        <p>
+          Please answer the following questions based on your observations of
+          your child. There are no right or wrong answers—we're interested in
+          understanding your child's natural tendencies.
+        </p>
+
+        <!-- <div class="progress-container">
+          <div
+            class="progress-bar"
+            id="questionnaire-progress"
+            style="width: 0%"
+          ></div>
+        </div> -->
+        <progress class="progress-container" [value]="currentQuestion" max="4"></progress>
+
+        <div class="time-indicator">
+          <svg
+            class="time-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="10" stroke="#767676" stroke-width="2" />
+            <path
+              d="M12 6V12L16 14"
+              stroke="#767676"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span id="time-remaining">Estimated time remaining: 12 minutes</span>
+        </div>
+
+        <div id="question-container">
+          <!-- Questions will be loaded dynamically here -->
+            <div class="question" id="question-1">
+              <h3>
+                Question {{currentQuestion+1}} {{questions[currentQuestion].text}}
+                <span class="tooltip">
+                  <span class="tooltip-icon">?</span>
+                  <span class="tooltip-text"
+                    >{{questions[currentQuestion].tooltip}}</span
+                  >
+                </span>
+              </h3>
+
+              <div class="rating-scale">
+                <span class="rating-label">Not at all</span>
+                <span class="rating-label">Rarely</span>
+                <span class="rating-label">Sometimes</span>
+                <span class="rating-label">Often</span>
+                <span class="rating-label">Very often</span>
+              </div>
+
+              <div class="rating-options">
+                <label class="rating-option">
+                  <input
+                    type="radio"
+                    name="q1"
+                    value="1"
+                    class="rating-radio"
+                  />
+                  <span>1</span>
+                </label>
+                <label class="rating-option">
+                  <input
+                    type="radio"
+                    name="q1"
+                    value="2"
+                    class="rating-radio"
+                  />
+                  <span>2</span>
+                </label>
+                <label class="rating-option">
+                  <input
+                    type="radio"
+                    name="q1"
+                    value="3"
+                    class="rating-radio"
+                  />
+                  <span>3</span>
+                </label>
+                <label class="rating-option">
+                  <input
+                    type="radio"
+                    name="q1"
+                    value="4"
+                    class="rating-radio"
+                  />
+                  <span>4</span>
+                </label>
+                <label class="rating-option">
+                  <input
+                    type="radio"
+                    name="q1"
+                    value="5"
+                    class="rating-radio"
+                  />
+                  <span>5</span>
+                </label>
+              </div>
+            </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="previousQuestion()">Back</button>
+          <button class="btn btn-outline" id="save-later">
+            Save for Later
+          </button>
+          <button class="btn" (click)="nextQuestion()">Next Question</button>
+        </div>
+      </div>
+
+      <!-- 4. PROGRESS TRACKER -->
+      <div
+        id="page-4"
+        class="module-page active content-container"
+        *ngIf="currentStep === 3"
+      >
+        <h1>Your Progress</h1>
+        <p>
+          You're doing great! Here's your progress so far in the assessment.
+        </p>
+
+        <div class="progress-container">
+          <div class="progress-bar" style="width: 70%"></div>
+        </div>
+
+        <div class="card">
+          <h3>Questionnaire Sections</h3>
+          <ul>
+            <li>✓ Information Processing (Completed)</li>
+            <li>✓ Environmental Preferences (Completed)</li>
+            <li>✓ Social Interaction (Completed)</li>
+            <li>→ Problem-Solving (Current Section)</li>
+            <li>○ Creativity & Expression (Not Started)</li>
+          </ul>
+        </div>
+
+        <div class="time-indicator">
+          <svg
+            class="time-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="10" stroke="#767676" stroke-width="2" />
+            <path
+              d="M12 6V12L16 14"
+              stroke="#767676"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Estimated time to completion: 5 minutes</span>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="goToPreviousStep()">
+            Review Previous Sections
+          </button>
+          <button class="btn" (click)="goToNextStep()">
+            Continue Assessment
+          </button>
+        </div>
+      </div>
+
+      <!-- 5. RESULTS & INSIGHTS DASHBOARD -->
+      <div
+        id="page-5"
+        class="module-page active content-container"
+        *ngIf="currentStep === 4"
+      >
+        <h1>Your Child's Cognitive Profile</h1>
+        <p>
+          Based on your responses, we've identified the following strengths and
+          preferences in your child's learning and thinking style.
+        </p>
+
+        <div class="results-summary card">
+          <h3>Profile Summary</h3>
+          <p>
+            Your child shows a natural preference for visual-spatial learning
+            with particular strengths in creative problem-solving and detailed
+            observation. They thrive in environments that offer structure with
+            some flexibility for exploration.
+          </p>
+        </div>
+
+        <div class="trait-visualization card">
+          <h3>Learning Style Preferences</h3>
+
+          <div class="trait-item">
+            <div class="trait-label">
+              <span>Visual-Spatial</span>
+              <span>Strong Preference</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <div class="trait-item">
+            <div class="trait-label">
+              <span>Auditory</span>
+              <span>Moderate Preference</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 60%"></div>
+            </div>
+          </div>
+
+          <div class="trait-item">
+            <div class="trait-label">
+              <span>Kinesthetic</span>
+              <span>Strong Preference</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 80%"></div>
+            </div>
+          </div>
+
+          <div class="trait-item">
+            <div class="trait-label">
+              <span>Verbal-Linguistic</span>
+              <span>Moderate Preference</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 55%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="strengths-section card">
+          <h3>Key Strengths</h3>
+
+          <div class="strength-card">
+            <svg
+              class="strength-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="#4A9D9C"
+                stroke-width="2"
+              />
+              <path
+                d="M12 7V12"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M12 16V16.01"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div>
+              <h4>Detail-Oriented</h4>
+              <p>
+                Your child notices fine details and patterns that others might
+                miss, giving them a unique perspective on problems and
+                experiences.
+              </p>
+            </div>
+          </div>
+
+          <div class="strength-card">
+            <svg
+              class="strength-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="#4A9D9C"
+                stroke-width="2"
+              />
+              <path
+                d="M12 7V12"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M12 16V16.01"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div>
+              <h4>Creative Problem-Solver</h4>
+              <p>
+                Your child demonstrates exceptional ability to approach problems
+                from multiple angles and find innovative solutions.
+              </p>
+            </div>
+          </div>
+
+          <div class="strength-card">
+            <svg
+              class="strength-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="#4A9D9C"
+                stroke-width="2"
+              />
+              <path
+                d="M12 7V12"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M12 16V16.01"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div>
+              <h4>Deep Focus Capacity</h4>
+              <p>
+                When engaged with topics of interest, your child shows
+                remarkable ability to concentrate and absorb information.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="goToPreviousStep()">
+            Back
+          </button>
+          <button class="btn" (click)="goToNextStep()">
+            View Recommendations
+          </button>
+        </div>
+      </div>
+
+      <!-- 6. ACTION RECOMMENDATIONS -->
+      <div
+        id="page-6"
+        class="module-page active content-container"
+        *ngIf="currentStep === 5"
+      >
+        <h1>Personalized Recommendations</h1>
+        <p>
+          Based on your child's cognitive profile, here are practical strategies
+          to support their learning style and build on their natural strengths.
+        </p>
+
+        <div class="card">
+          <h3>Learning Environment Adaptations</h3>
+
+          <div class="action-card">
+            <h4 class="action-title">Visual Learning Tools</h4>
+            <p>
+              Incorporate mind maps, color-coding, and visual organizers to
+              enhance learning and information retention.
+            </p>
+            <p>
+              <strong>Try this:</strong> Create color-coded flashcards for key
+              concepts or use highlighters to organize information in textbooks.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <h4 class="action-title">Movement Breaks</h4>
+            <p>
+              Integrate short movement activities between learning sessions to
+              maintain focus and engagement.
+            </p>
+            <p>
+              <strong>Try this:</strong> Set a timer for 25-minute work periods
+              followed by 5-minute stretch or movement breaks.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <h4 class="action-title">Structured Flexibility</h4>
+            <p>
+              Provide clear guidelines and expectations while allowing room for
+              creative exploration and problem-solving.
+            </p>
+            <p>
+              <strong>Try this:</strong> Create a visual schedule with
+              designated "free choice" periods for self-directed learning.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Recommended Activities</h3>
+
+          <div class="action-card">
+            <h4 class="action-title">3D Spatial Puzzles</h4>
+            <p>
+              Building blocks, tangrams, and 3D puzzles can enhance spatial
+              reasoning skills and creative problem-solving.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <h4 class="action-title">Visual Arts</h4>
+            <p>
+              Drawing, painting, and other visual arts provide outlets for
+              creativity and strengthen visual-spatial abilities.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <h4 class="action-title">Pattern-Based Games</h4>
+            <p>
+              Chess, programming games, and pattern-matching activities support
+              logical thinking and strategic planning.
+            </p>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="goToPreviousStep()">
+            Back
+          </button>
+          <button class="btn" (click)="goToNextStep()">
+            Save & Share Results
+          </button>
+        </div>
+      </div>
+
+      <!-- 7. DOWNLOAD/SHARE OPTIONS -->
+      <div
+        id="page-7"
+        class="module-page active content-container"
+        *ngIf="currentStep === 6"
+      >
+        <h1>Save & Share Your Results</h1>
+        <p>
+          Your child's cognitive profile and recommendations are ready. You can
+          now save this information for future reference or share with
+          educators.
+        </p>
+
+        <div class="download-options">
+          <div class="download-option" onclick="downloadPDF()">
+            <div class="download-icon">📄</div>
+            <h4>Download PDF</h4>
+            <p>Save a complete report with profile and recommendations</p>
+          </div>
+
+          <div class="download-option" onclick="emailResults()">
+            <div class="download-icon">📧</div>
+            <h4>Email Results</h4>
+            <p>Send the report to your email address</p>
+          </div>
+
+          <div class="download-option" onclick="printResults()">
+            <div class="download-icon">🖨️</div>
+            <h4>Print Report</h4>
+            <p>Print a paper copy of the complete report</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Share with Educators</h3>
+          <p>
+            You can share these results with teachers or other educational
+            professionals to help them better understand your child's learning
+            style.
+          </p>
+
+          <div class="form-group">
+            <label for="educator-email">Educator's Email Address</label>
+            <input
+              type="email"
+              id="educator-email"
+              class="form-control"
+              placeholder="Enter email address"
+            />
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <input type="checkbox" id="share-consent" />
+              <label for="share-consent"
+                >I consent to sharing this information with the educator</label
+              >
+            </div>
+          </div>
+
+          <button class="btn btn-outline" onclick="shareWithEducator()">
+            Share with Educator
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>Privacy Controls</h3>
+          <p>
+            Your data is stored securely. You can control how your information
+            is used:
+          </p>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <input type="checkbox" id="delete-after-download" checked />
+              <label for="delete-after-download"
+                >Delete my data after 30 days</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-group">
+              <input type="checkbox" id="anonymous-research" />
+              <label for="anonymous-research"
+                >Allow anonymous use of data for research to improve the
+                platform</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="goToPreviousStep()">
+            Back
+          </button>
+          <button class="btn" (click)="redirectToHome()">
+            Complete & Return Home
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <app-footer></app-footer>
+</div>

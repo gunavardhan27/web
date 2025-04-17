@@ -1,15 +1,16 @@
 import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [MatSlideToggleModule,MatIcon],
+  imports: [MatSlideToggleModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private router:Router) {}
   isDyslexiaMode = false 
   isCalmMode = false 
   @Output() logoutEvent:EventEmitter<null> = new EventEmitter() 
@@ -29,5 +30,8 @@ export class NavBarComponent {
   }
   toggleLogout(){
     this.logoutEvent.emit()
+  }
+  cgModule() {
+    this.router.navigate(['/caregivers'])
   }
 }
