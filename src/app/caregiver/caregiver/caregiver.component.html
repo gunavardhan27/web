@@ -261,6 +261,7 @@
       </div>
 
       <!-- 3. SRS QUESTIONNAIRE INTERFACE -->
+       <form [formGroup]="form">
       <div
         id="page-3"
         class="module-page active content-container"
@@ -280,7 +281,11 @@
             style="width: 0%"
           ></div>
         </div> -->
-        <progress class="progress-container" [value]="currentQuestion" max="4"></progress>
+        <progress
+          class="progress-container"
+          [value]="currentQuestion"
+          max="14"
+        ></progress>
 
         <div class="time-indicator">
           <svg
@@ -303,16 +308,18 @@
           <span id="time-remaining">Estimated time remaining: 12 minutes</span>
         </div>
 
-        <div id="question-container">
+        <div id="question-container" formArrayName="answers">
           <!-- Questions will be loaded dynamically here -->
+          <div *ngIf="currentQuestion < 5" [formGroupName]="currentQuestion">
             <div class="question" id="question-1">
               <h3>
-                Question {{currentQuestion+1}} {{questions[currentQuestion].text}}
+                Question {{ currentQuestion + 1 }}
+                {{ questions[currentQuestion].text }}
                 <span class="tooltip">
                   <span class="tooltip-icon">?</span>
-                  <span class="tooltip-text"
-                    >{{questions[currentQuestion].tooltip}}</span
-                  >
+                  <span class="tooltip-text">{{
+                    questions[currentQuestion].tooltip
+                  }}</span>
                 </span>
               </h3>
 
@@ -325,63 +332,75 @@
               </div>
 
               <div class="rating-options">
-                <label class="rating-option">
+                <label class="rating-option" *ngFor="let rating of [1, 2, 3, 4, 5]">
                   <input
                     type="radio"
-                    name="q1"
-                    value="1"
                     class="rating-radio"
-                  />
-                  <span>1</span>
-                </label>
-                <label class="rating-option">
-                  <input
-                    type="radio"
-                    name="q1"
-                    value="2"
-                    class="rating-radio"
-                  />
-                  <span>2</span>
-                </label>
-                <label class="rating-option">
-                  <input
-                    type="radio"
-                    name="q1"
-                    value="3"
-                    class="rating-radio"
-                  />
-                  <span>3</span>
-                </label>
-                <label class="rating-option">
-                  <input
-                    type="radio"
-                    name="q1"
-                    value="4"
-                    class="rating-radio"
-                  />
-                  <span>4</span>
-                </label>
-                <label class="rating-option">
-                  <input
-                    type="radio"
-                    name="q1"
-                    value="5"
-                    class="rating-radio"
-                  />
-                  <span>5</span>
+                    [value]="rating"
+                    [formControlName]="'answer'" />
+                  <span>{{ rating }}</span>
                 </label>
               </div>
+              <div class="nav-controls">
+                <button class="btn btn-outline" (click)="previousQuestion()">
+                  Back
+                </button>
+                <button class="btn btn-outline" id="save-later">
+                  Save for Later
+                </button>
+                <button class="btn" (click)="nextQuestion()">
+                  Next Question
+                </button>
+              </div>
             </div>
-        </div>
+          </div>
+          <div *ngIf="currentQuestion >= 5 && currentQuestion < 15" [formGroupName]="currentQuestion">
+            <div class="question" id="question-1">
+              <h3>
+                Question {{ currentQuestion - 4 }}
+                {{ qchatQuestions[currentQuestion - 5].text }}
+                <span class="tooltip">
+                  <span class="tooltip-icon">?</span>
+                  <span class="tooltip-text">{{
+                    qchatQuestions[currentQuestion - 5].tooltip
+                  }}</span>
+                </span>
+              </h3>
 
-        <div class="nav-controls">
-          <button class="btn btn-outline" (click)="previousQuestion()">Back</button>
-          <button class="btn btn-outline" id="save-later">
-            Save for Later
-          </button>
-          <button class="btn" (click)="nextQuestion()">Next Question</button>
+              <div class="rating-scale">
+                <span class="rating-label">Never</span>
+                <span class="rating-label">Rarely</span>
+                <span class="rating-label">Sometimes</span>
+                <span class="rating-label">Usually</span>
+                <span class="rating-label">Always</span>
+              </div>
+
+              <div class="rating-options">
+                <label class="rating-option" *ngFor="let rating of [0,1, 2, 3, 4]">
+                  <input
+                    type="radio"
+                    class="rating-radio"
+                    [value]="rating"
+                    [formControlName]="'answer'" />
+                  <span>{{ rating }}</span>
+                </label>
+              </div>
+              <div class="nav-controls">
+                <button class="btn btn-outline" (click)="previousQuestion()">
+                  Back
+                </button>
+                <button class="btn btn-outline" id="save-later">
+                  Save for Later
+                </button>
+                <button class="btn" (click)="nextQchatQuestion()">
+                  Next Question
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </form>
 
       <!-- 4. PROGRESS TRACKER -->
       <div
