@@ -7,6 +7,7 @@ import { PasswordModule } from 'primeng/password';
 import { MatInputModule } from '@angular/material/input'
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+declare var bootstrap: any; 
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule,
@@ -18,6 +19,13 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  showModal: boolean = false
+  ngOnInit() {
+      this.showModal = true;
+  }
+  closeModal() {
+    this.showModal = false;
+  }
   userForm!: FormGroup
   constructor(private authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) {
     this.userForm = this.formBuilder.group({

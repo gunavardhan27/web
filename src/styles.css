@@ -5,8 +5,12 @@
 
   :root {
     --primary: #4a9d9c;
+    --primary-light: #6FBFBE;
+    --primary-dark: #3A7C7B;
     --secondary: #e6b655;
+    --secondary-light: #FFD280;
     --accent: #9c6dd8;
+    --accent-light: #BCA0E8;
     --neutral-light: #f7f7f7;
     --neutral-medium: #e0e0e0;
     --neutral-dark: #767676;
@@ -20,4 +24,7 @@
     --spacing-md: 24px;
     --spacing-lg: 32px;
     --spacing-xl: 48px;
+    --shadow-small: 0 4px 12px rgba(0,0,0,0.05);
+    --shadow-medium: 0 8px 24px rgba(0,0,0,0.08);
+    --shadow-large: 0 12px 32px rgba(0,0,0,0.12);
   }

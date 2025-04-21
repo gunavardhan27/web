@@ -63,4 +63,7 @@ export class MainComponent {
   redirectToGames() {
     this.router.navigate(['/home/games'])
   }
+  careGiverModule() {
+    this.router.navigate(['/caregivers'])
+  }
 }

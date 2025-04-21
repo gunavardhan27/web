@@ -29,9 +29,14 @@ export class NavBarComponent {
     }
   }
   toggleLogout(){
+    localStorage.removeItem('token')
+    this.router.navigate(['/auth/login'])
     this.logoutEvent.emit()
   }
-  cgModule() {
-    this.router.navigate(['/caregivers'])
+  goToAbout() {
+    this.router.navigate(['/home/about'])
+  }
+  faq(){
+    this.router.navigate(['/home/faq'])
   }
 }

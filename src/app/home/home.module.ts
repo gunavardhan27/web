@@ -11,6 +11,8 @@ import { ScreeningComponent } from './components/screening/screening.component';
 import { AdhdScreeningComponent } from './components/adhd-screening/adhd-screening.component';
 import { GamesModule } from './components/games/games.module';
 import { GamesRoutingModule } from './components/games/games.route';
+import { AboutComponent } from './components/about/about.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 
@@ -23,7 +25,7 @@ import { GamesRoutingModule } from './components/games/games.route';
     NavBarComponent,
     MatSlideToggleModule,
     ScreeningComponent,
-    AdhdScreeningComponent,GamesModule,
+    AdhdScreeningComponent,GamesModule,AboutComponent,FaqComponent
   ],
   providers: [AuthenticationService,MlService,provideHttpClient()]
 })
