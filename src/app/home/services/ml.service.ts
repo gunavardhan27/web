@@ -14,4 +14,7 @@ export class MlService {
   getAsdResponse(data:ASD){
     return this.http.post(`${this.apiUrl}/predict-asd`,data)
   }
+  getDyslexiaResponse(data:any){
+    return this.http.post(`${this.apiUrl}/dyslexia-predict`,data)
+  }
 }

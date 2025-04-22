@@ -16,4 +16,8 @@ export class GameComponent {
   startGame() {
     this.router.navigate(['dyslexia_game/play']);  
   }
+
+  startDysGame() {
+    this.router.navigate(['/dyslexia_game/finder'])
+  }
 }

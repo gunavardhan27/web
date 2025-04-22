@@ -1,0 +1,223 @@
+<div class="stepper-container">
+    <div class="step-indicators">
+      <div
+        class="step"
+        *ngFor="let step of steps; let i = index"
+        [class.active]="i === currentStep"
+        [class.completed]="i < currentStep"
+        (click)="setStep(i)"
+      >
+        <span class="circle">{{ i + 1 }}</span>
+        <span class="label">{{ step }}</span>
+      </div>
+    </div>
+    <div class="container">
+        <div class="step-content" *ngIf="currentStep === 0">
+            <div class="text-center p-2 flex flex-col items-center w-[80%] m-auto">
+                <h1 class="font-bold mb-4 text-2xl">Upload game Results</h1>
+                <textarea class="border-1 border-black border-solid w-[100%] p-2 h-[400px]" [(ngModel)]="gameData"></textarea>
+                <div class="flex flex-row items-center justify-end w-full"><button 
+                    class="subBtn"  (click)="upload()">Upload</button></div>
+            </div>
+            <div class="flex flex-row items-center justify-between">
+                <button class="bg-black text-white p-2 rounded-md" (click)="previousStep()">
+                  Back
+                </button>
+                <button class="bg-black text-white p-2 rounded-md" (click)="nextStep()">
+                  Next
+                </button>
+              </div>
+        </div>
+    
+
+
+        <div
+        id="page-5"
+        class="module-page active content-container"
+        *ngIf="currentStep === 1"
+      >
+        <h1>Your Child's Cognitive Profile</h1>
+        <p>
+          Based on your responses, we've identified the following strengths and
+          preferences in your child's learning and thinking style.
+        </p>
+
+        <div class="results-summary card">
+          <h3>Profile Summary</h3>
+          <p>
+            Your child shows a natural preference for visual-spatial learning
+            with particular strengths in creative problem-solving and detailed
+            observation. They thrive in environments that offer structure with
+            some flexibility for exploration.
+          </p>
+        </div>
+
+        <div class="trait-visualization card">
+          <h3>Learning Style Preferences</h3>
+          
+          <div *ngFor="let elem of learningStylePreferences; let i = index" class="trait-item">
+            <div class="trait-label">
+              <span>{{elem}}</span>
+              <span>{{i%2 ? 'Strong Preference' : 'Weak Preference'}}</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 85%"></div>
+            </div>
+          </div>
+
+          <!-- <div class="trait-item">
+            <div class="trait-label">
+              <span>Auditory</span>
+              <span>Moderate Preference</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 60%"></div>
+            </div>
+          </div>
+
+          <div class="trait-item">
+            <div class="trait-label">
+              <span>Kinesthetic</span>
+              <span>Strong Preference</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 80%"></div>
+            </div>
+          </div>
+
+          <div class="trait-item">
+            <div class="trait-label">
+              <span>Verbal-Linguistic</span>
+              <span>Moderate Preference</span>
+            </div>
+            <div class="trait-bar">
+              <div class="trait-level" style="width: 55%"></div>
+            </div>
+          </div> -->
+        </div>
+
+        <div class="strengths-section card">
+          <h3>Key Strengths</h3>
+
+          <div *ngFor="let elem of keyStrengths" class="strength-card">
+            <svg
+              class="strength-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                stroke="#4A9D9C"
+                stroke-width="2"
+              />
+              <path
+                d="M12 7V12"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M12 16V16.01"
+                stroke="#4A9D9C"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div>
+              <h4>{{elem[0]}}</h4>
+              <p>
+                {{elem[1]}}
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="previousStep()">
+            Back
+          </button>
+          <button class="btn" (click)="nextStep()">
+            View Recommendations
+          </button>
+        </div>
+      </div>
+
+      <!-- 6. ACTION RECOMMENDATIONS -->
+      <div
+        id="page-6"
+        class="module-page active content-container"
+        *ngIf="currentStep === 2"
+      >
+        <h1>Personalized Recommendations</h1>
+        <p>
+          Based on your child's cognitive profile, here are practical strategies
+          to support their learning style and build on their natural strengths.
+        </p>
+
+        <div class="card">
+          <h3>Learning Environment Adaptations</h3>
+
+          <div *ngFor="let elem of learningEnvironmentAdaptations" class="action-card">
+            <h4 class="action-title">{{elem[0]}}</h4>
+            <p>
+              {{elem[1]}}
+            </p>
+            <p>
+              <strong>Try this:</strong> {{elem[2]}}
+            </p>
+          </div>
+
+          <!-- <div class="action-card">
+            <h4 class="action-title">Movement Breaks</h4>
+            <p>
+              Integrate short movement activities between learning sessions to
+              maintain focus and engagement.
+            </p>
+            <p>
+              <strong>Try this:</strong> Set a timer for 25-minute work periods
+              followed by 5-minute stretch or movement breaks.
+            </p>
+          </div>
+
+          <div class="action-card">
+            <h4 class="action-title">Structured Flexibility</h4>
+            <p>
+              Provide clear guidelines and expectations while allowing room for
+              creative exploration and problem-solving.
+            </p>
+            <p>
+              <strong>Try this:</strong> Create a visual schedule with
+              designated "free choice" periods for self-directed learning.
+            </p>
+          </div>-->
+        </div>
+
+        <div class="card">
+          <h3>Recommended Activities</h3>
+
+          <div *ngFor="let elem of recommendedActivities" class="action-card">
+            <h4 class="action-title">{{elem[0]}}</h4>
+            <p>
+              {{elem[1]}}
+            </p>
+          </div>
+        </div>
+
+        <div class="nav-controls">
+          <button class="btn btn-outline" (click)="previousStep()">
+            Back
+          </button>
+          <button class="btn" (click)="nextStep()">
+            Save & Share Results
+          </button>
+        </div>
+      </div>
+
+    </div>
+    
+</div>

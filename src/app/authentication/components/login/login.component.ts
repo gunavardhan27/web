@@ -51,4 +51,8 @@ export class LoginComponent {
       }
     })
   }
+  exploreAnonymously() {
+    localStorage.setItem('token','guest')
+    this.router.navigate(['/home'])
+  }
 }

@@ -432,18 +432,18 @@
 
         <div class="trait-visualization card">
           <h3>Learning Style Preferences</h3>
-
-          <div class="trait-item">
+          
+          <div *ngFor="let elem of learningStylePreferences; let i = index" class="trait-item">
             <div class="trait-label">
-              <span>Visual-Spatial</span>
-              <span>Strong Preference</span>
+              <span>{{elem}}</span>
+              <span>{{i%2 ? 'Strong Preference' : 'Weak Preference'}}</span>
             </div>
             <div class="trait-bar">
               <div class="trait-level" style="width: 85%"></div>
             </div>
           </div>
 
-          <div class="trait-item">
+          <!-- <div class="trait-item">
             <div class="trait-label">
               <span>Auditory</span>
               <span>Moderate Preference</span>
@@ -471,13 +471,13 @@
             <div class="trait-bar">
               <div class="trait-level" style="width: 55%"></div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="strengths-section card">
           <h3>Key Strengths</h3>
 
-          <div class="strength-card">
+          <div *ngFor="let elem of keyStrengths" class="strength-card">
             <svg
               class="strength-icon"
               width="24"
@@ -505,16 +505,14 @@
               />
             </svg>
             <div>
-              <h4>Detail-Oriented</h4>
+              <h4>{{elem[0]}}</h4>
               <p>
-                Your child notices fine details and patterns that others might
-                miss, giving them a unique perspective on problems and
-                experiences.
+                {{elem[1]}}
               </p>
             </div>
           </div>
 
-          <div class="strength-card">
+          <!-- <div class="strength-card">
             <svg
               class="strength-icon"
               width="24"
@@ -584,7 +582,7 @@
                 remarkable ability to concentrate and absorb information.
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="nav-controls">
@@ -612,19 +610,17 @@
         <div class="card">
           <h3>Learning Environment Adaptations</h3>
 
-          <div class="action-card">
-            <h4 class="action-title">Visual Learning Tools</h4>
+          <div *ngFor="let elem of learningEnvironmentAdaptations" class="action-card">
+            <h4 class="action-title">{{elem[0]}}</h4>
             <p>
-              Incorporate mind maps, color-coding, and visual organizers to
-              enhance learning and information retention.
+              {{elem[1]}}
             </p>
             <p>
-              <strong>Try this:</strong> Create color-coded flashcards for key
-              concepts or use highlighters to organize information in textbooks.
+              <strong>Try this:</strong> {{elem[2]}}
             </p>
           </div>
 
-          <div class="action-card">
+          <!-- <div class="action-card">
             <h4 class="action-title">Movement Breaks</h4>
             <p>
               Integrate short movement activities between learning sessions to
@@ -646,33 +642,16 @@
               <strong>Try this:</strong> Create a visual schedule with
               designated "free choice" periods for self-directed learning.
             </p>
-          </div>
+          </div>-->
         </div>
 
         <div class="card">
           <h3>Recommended Activities</h3>
 
-          <div class="action-card">
-            <h4 class="action-title">3D Spatial Puzzles</h4>
+          <div *ngFor="let elem of recommendedActivities" class="action-card">
+            <h4 class="action-title">{{elem[0]}}</h4>
             <p>
-              Building blocks, tangrams, and 3D puzzles can enhance spatial
-              reasoning skills and creative problem-solving.
-            </p>
-          </div>
-
-          <div class="action-card">
-            <h4 class="action-title">Visual Arts</h4>
-            <p>
-              Drawing, painting, and other visual arts provide outlets for
-              creativity and strengthen visual-spatial abilities.
-            </p>
-          </div>
-
-          <div class="action-card">
-            <h4 class="action-title">Pattern-Based Games</h4>
-            <p>
-              Chess, programming games, and pattern-matching activities support
-              logical thinking and strategic planning.
+              {{elem[1]}}
             </p>
           </div>
         </div>

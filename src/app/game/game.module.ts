@@ -5,6 +5,8 @@ import { GameRoutes } from './game.routes';
 import { NavBarComponent } from '../home/components/nav-bar/nav-bar.component';
 import { GameComponent } from './game.component';
 import { DyslexiagameComponent } from './dyslexiagame/dyslexiagame.component';
+import { FinderComponent } from './finder/finder.component';
+import { MlService } from '../home/services/ml.service';
 
 @NgModule({
   imports: [
@@ -13,6 +15,10 @@ import { DyslexiagameComponent } from './dyslexiagame/dyslexiagame.component';
     GameComponent,              
     DyslexiagameComponent,
     NavBarComponent,
+    FinderComponent,
+    ],
+    providers: [
+      MlService
   ]
 })
 export class GameModule { }
