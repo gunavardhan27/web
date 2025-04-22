@@ -303,8 +303,6 @@ export class CaregiverComponent {
         this.submit()
         this.goToNextStep()
       }
-      console.log(this.currentQuestion)
-      this.answers.at(this.currentQuestion).get('answer')?.reset(null);
     }
 
     nextQchatQuestion() {
