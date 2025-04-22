@@ -1,0 +1,170 @@
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #000;
+}
+
+body.night-mode {
+  --bg-color: #2e2e2e;
+  --text-color: #fff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.game-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  padding: 0 20px;
+}
+
+.night-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.color-word-display {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 30px 0;
+  line-height: 1.5;         
+  letter-spacing: 2px;      
+}
+
+.color-word {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.color-button {
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.color-button:hover {
+  transform: scale(1.05);
+}
+
+.final-score {
+  margin-top: 40px;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+/* Responsive behavior for small screens */
+@media (max-width: 600px) {
+  .options {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .color-button {
+    width: 90vw;
+  }
+}
+
+.result-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  background-color: var(--bg-color);
+}
+
+.result-card {
+  background: #fff;
+  color: #000;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body.night-mode .result-card {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.result-description {
+  margin: 15px 0 25px;
+  font-size: 1rem;
+}
+
+.result-info {
+  margin-bottom: 30px;
+}
+
+.result-info ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.result-info li {
+  margin: 6px 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.stat {
+  font-size: 1.2rem;
+}
+
+.try-again {
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #4a9d9c;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.try-again:hover {
+  background-color: #3d8483;
+}

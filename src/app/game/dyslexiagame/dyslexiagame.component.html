@@ -1,0 +1,51 @@
+<app-nav-bar></app-nav-bar>
+
+<!-- Game -->
+<div class="game-container" *ngIf="!isResultPage">
+  <h3>Trial {{ trial }} of {{ totalTrials }}</h3>
+  <h1 [style.color]="getColorCode(currentColor)" class="color-word-display">
+    {{ currentWord | uppercase }}
+  </h1>  
+
+  <div class="options">
+    <button *ngFor="let color of options"
+            (click)="checkAnswer(color)"
+            [style.background]="getColorCode(color)"
+            class="color-button">
+    </button>
+  </div>
+</div>
+
+<!-- Result -->
+<div class="result-wrapper" *ngIf="isResultPage">
+  <div class="result-card">
+    <h1>Wonderful Effort! 🌟</h1>
+    <p class="result-description">
+      You're a Methodical Thinker! You approach challenges with careful consideration and your own unique style.
+    </p>
+
+    <div class="result-info">
+      <h4>Your Learning Strengths:</h4>
+      <ul>
+        <li>✨ Methodical Processing</li>
+        <li>✨ Independent Thinking</li>
+        <li>✨ Unique Problem-Solving</li>
+      </ul>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>{{ accuracy }}%</strong>
+        <p>Accuracy</p>
+      </div>
+      <div class="stat">
+        <strong>{{ averageResponseTime }}ms</strong>
+        <p>Average Response Time</p>
+      </div>
+    </div>
+
+    <button class="try-again" (click)="tryAgain()">Try Again</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

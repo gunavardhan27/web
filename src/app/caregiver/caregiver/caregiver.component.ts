@@ -173,7 +173,7 @@ export class CaregiverComponent {
         this.currentQuestion++;
       }
       console.log(this.currentQuestion)
-      
+      this.answers.at(this.currentQuestion).get('answer')?.reset(null);
     }
 
     nextQchatQuestion() {

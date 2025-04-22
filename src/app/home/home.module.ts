@@ -9,8 +9,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ScreeningComponent } from './components/screening/screening.component';
 import { AdhdScreeningComponent } from './components/adhd-screening/adhd-screening.component';
-import { GamesModule } from './components/games/games.module';
-import { GamesRoutingModule } from './components/games/games.route';
+// import { GamesModule } from './components/games/games.module';
+// import { GamesRoutingModule } from './components/games/games.route';
 
 
 
@@ -23,7 +23,8 @@ import { GamesRoutingModule } from './components/games/games.route';
     NavBarComponent,
     MatSlideToggleModule,
     ScreeningComponent,
-    AdhdScreeningComponent,GamesModule,
+    AdhdScreeningComponent,
+    // GamesModule,
   ],
   providers: [AuthenticationService,MlService,provideHttpClient()]
 })

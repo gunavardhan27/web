@@ -61,6 +61,6 @@ export class MainComponent {
     this.accessibilityMenu = !this.accessibilityMenu
   }
   redirectToGames() {
-    this.router.navigate(['/home/games'])
+    this.router.navigate(['/dyslexia_game'])
   }
 }

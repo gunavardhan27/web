@@ -5,5 +5,5 @@ export const routes: Routes = [
     { path: 'auth', loadChildren: () => import('./authentication/authentication.module').then((m) => m.AuthenticationModule), canActivate: [loginGuard] },
     { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [authGuard] },
     {path:'caregivers', loadChildren: () => import('./caregiver/caregiver.module').then(m => m.CaregiverModule), canActivate: [authGuard]},
-
+    {path: 'dyslexia_game',loadChildren: () => import('./game/game.module').then(m => m.GameModule),canActivate: [authGuard]}
 ];
