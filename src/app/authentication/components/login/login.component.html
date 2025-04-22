@@ -1,35 +1,259 @@
-<div class="w-full h-screen flex flex-row items-center justify-center text-white">
-    <div class="bg-gray-500 bg-opacity-50 p-9 rounded-xl w-[500px]">
-        <div class="w-[60%] mb-2.5">
-            <h1 class="font-bold text-xl">Welcome Back!</h1>
-            <p class="text-sm text-gray-300">Enter you details to sign in to your account</p>
-        </div>
-        <form [formGroup]="userForm" class="w-full">
-            <div class="w-full flex flex-col items-start justify-center gap-1.5">
-                <mat-label for="username">Username</mat-label>
-                <input type="text" name="username" placeholder="Enter username" formControlName="username"
-                    class="border border-white p-2 rounded-lg w-full text-sm" />
-                <mat-error class="text-red-400 text-sm"
-                    *ngIf="userForm.controls['username'].touched && userForm.controls['username'].invalid">
-                    enter valid username
-                </mat-error>
-
-
-            </div>
-            <div class="w-full flex flex-col items-start justify-center gap-1.5 mt-3">
-                <mat-label mandatory>Password</mat-label>
-                <input type="password" name="password" placeholder="Enter password" formControlName="password"
-                    class="border border-white p-2 rounded-lg w-full text-sm" />
-                <mat-error class="text-red-400 text-sm"
-                    *ngIf="userForm.controls['password'].touched && userForm.controls['password'].invalid">
-                    enter valid password
-                </mat-error>
-            </div>
-            <button type="submit" [disabled]="userForm.invalid"
-                class="bg-blue-500 w-full text-center mt-4 rounded-full p-2 text-md" (click)="login()">Login</button>
-        </form>
-        <p class="text-center text-gray-400 text-sm mt-2">Don't have an Account? <a class="text-blue-400"
-                routerLink="/auth/register">Register</a>
-        </p>
+<!-- Simplified Splash Container -->
+<div class="splash-container">
+  <!-- Reduced number of decorations -->
+  <div class="splash-decorations">
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+  </div>
+  <div class="splash-content">
+    <div class="flex flex-row items-center justify-center">
+      <div class="splash-logo">
+        <!-- Simplified SVG with fewer paths -->
+        <svg
+          width="180"
+          height="180"
+          viewBox="0 0 180 180"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="90"
+            cy="90"
+            r="85"
+            fill="white"
+            stroke="#4A9D9C"
+            stroke-width="6"
+          />
+          <path
+            d="M90 45C101.046 45 110 54.0543 110 65C110 75.9457 101.046 85 90 85C78.9543 85 70 75.9457 70 65C70 54.0543 78.9543 45 90 45Z"
+            fill="#4A9D9C"
+          />
+          <path
+            d="M57 65C63.6274 65 69 59.6274 69 53C69 46.3726 63.6274 41 57 41C50.3726 41 45 46.3726 45 53C45 59.6274 50.3726 65 57 65Z"
+            fill="#E6B655"
+          />
+          <path
+            d="M123 65C129.627 65 135 59.6274 135 53C135 46.3726 129.627 41 123 41C116.373 41 111 46.3726 111 53C111 59.6274 116.373 65 123 65Z"
+            fill="#E6B655"
+          />
+          <path
+            d="M45 95C45 79.536 57.536 67 73 67H107C122.464 67 135 79.536 135 95V107C135 122.464 122.464 135 107 135H73C57.536 135 45 122.464 45 107V95Z"
+            fill="#BCA0E8"
+            fill-opacity="0.3"
+          />
+          <path
+            d="M67 110C77.4934 123.5 102.507 123.5 113 110"
+            stroke="#4A9D9C"
+            stroke-width="6"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
     </div>
+    <h1 class="splash-title">Neurodiversity Discovery</h1>
+    <p class="splash-subtitle">
+      Explore and celebrate the unique cognitive strengths of every child
+      through our engaging, strength-based platform.
+    </p>
+    <a href="#login" class="splash-button">
+      Get Started
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 12H19M12 5L19 12L12 19"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </div>
 </div>
+
+<!-- Privacy Modal - Using *ngIf for proper conditional rendering -->
+<div *ngIf="showModal">
+  <div
+    class="privacy-modal"
+    id="privacyModal"
+    style="
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    "
+  >
+    <div
+      style="
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        max-width: 500px;
+        box-shadow: var(--shadow-large);
+      "
+    >
+      <h3 style="font-size: 24px; margin-bottom: 1rem; color: var(--primary)">
+        Your Privacy Matters
+      </h3>
+      <p style="margin-bottom: 1rem">
+        We believe in creating a safe space for discovery without judgment or
+        labels.
+      </p>
+      <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem" type="bulletType">
+        <li style="margin-bottom: 0.5rem">
+          We focus on celebrating cognitive strengths, not diagnosing
+          differences
+        </li>
+        <li style="margin-bottom: 0.5rem">
+          Your data is encrypted and never shared with third parties
+        </li>
+        <li style="margin-bottom: 0.5rem">
+          Choose anonymous exploration with no account required
+        </li>
+        <li style="margin-bottom: 0.5rem">
+          You control what information is shared and saved
+        </li>
+      </ul>
+      <div class="flex flex-row items-center justify-end">
+        <button
+          style="
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+          "
+          (click)="closeModal()"
+        >
+          Got It
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Form -->
+<section id="login">
+  <div class="auth-container">
+    <!-- Decorative Side - Simplified -->
+    <div class="auth-decorative-side">
+      <div class="auth-decorative-content">
+        <h2 class="auth-decorative-title">
+          Discover Natural Learning Strengths
+        </h2>
+        <p class="auth-decorative-text">
+          Our platform helps identify and celebrate cognitive diversity through
+          engaging, strength-based activities.
+        </p>
+        <div class="auth-decorative-features">
+          <div class="auth-feature-item">
+            <span>Strength-focused approach, highlighting abilities</span>
+          </div>
+          <div class="auth-feature-item">
+            <span>Non-diagnostic approach that avoids labeling</span>
+          </div>
+          <div class="auth-feature-item">
+            <span>Accessible design for diverse cognitive needs</span>
+          </div>
+          <div class="auth-feature-item">
+            <span>Privacy-focused with secure data protection</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Side -->
+    <div class="auth-form-side">
+      <div class="auth-form-wrapper">
+        <div class="auth-logo">
+          <!-- Simplified Logo SVG -->
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="20"
+              cy="20"
+              r="18"
+              fill="white"
+              stroke="#4A9D9C"
+              stroke-width="2"
+            />
+            <circle cx="20" cy="15" r="6" fill="#4A9D9C" />
+            <path
+              d="M15 25C17.6667 28 22.3333 28 25 25"
+              stroke="#4A9D9C"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span class="auth-logo-text">NeuroDiversity</span>
+        </div>
+
+        <h2 class="auth-title">Welcome to the Journey</h2>
+        <p class="auth-subtitle">
+          Sign in or create an account to start exploring cognitive strengths
+        </p>
+
+        <div class="auth-tabs">
+          <div class="auth-tab active">Login</div>
+          <div class="auth-tab" routerLink="/auth/register">Register</div>
+        </div>
+
+        <form class="auth-form" [formGroup]="userForm" (ngSubmit)="login()">
+          <div class="auth-form-group">
+            <label class="auth-label" for="email">Username</label>
+            <input
+              class="auth-input"
+              type="text"
+              id="email"
+              placeholder="Your username"
+              formControlName="username"
+            />
+          </div>
+
+          <div class="auth-form-group">
+            <label class="auth-label" for="password">Password</label>
+            <input
+              class="auth-input"
+              type="password"
+              id="password"
+              placeholder="Your password"
+              formControlName="password"
+            />
+          </div>
+
+          <div class="auth-remember">
+            <input class="auth-checkbox" type="checkbox" id="remember" />
+            <label for="remember">Remember me</label>
+            <a href="#" class="auth-forgot">Forgot password?</a>
+          </div>
+
+          <button class="auth-button" type="submit">Sign In</button>
+
+          <div class="auth-divider">Or continue with</div>
+
+          <button class="auth-anonymous" type="button">
+            Explore Anonymously
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

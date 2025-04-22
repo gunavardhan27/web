@@ -63,4 +63,7 @@ export class MainComponent {
   redirectToGames() {
     this.router.navigate(['/dyslexia_game'])
   }
+  careGiverModule() {
+    this.router.navigate(['/caregivers'])
+  }
 }

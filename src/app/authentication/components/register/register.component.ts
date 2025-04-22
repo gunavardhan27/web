@@ -19,10 +19,21 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class RegisterComponent {
   userForm!: FormGroup
+  showModal: boolean = false
+  ngOnInit() {
+    setTimeout(() => {
+      this.showModal = true;
+    });
+  }
+  closeModal() {
+    this.showModal = false;
+  }
   constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router) {
 
     this.userForm = this.fb.group({
       username: ['', [Validators.required]],
+      email:['',[Validators.email,Validators.required]],
+      relation:['',[Validators.required]],
       password: ['', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
     })
   }
