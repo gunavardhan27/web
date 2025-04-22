@@ -12,7 +12,7 @@ import { DyslexiagameComponent } from './dyslexiagame/dyslexiagame.component';
     RouterModule.forChild(GameRoutes),
     GameComponent,              
     DyslexiagameComponent,
-    NavBarComponent 
+    NavBarComponent,
   ]
 })
 export class GameModule { }

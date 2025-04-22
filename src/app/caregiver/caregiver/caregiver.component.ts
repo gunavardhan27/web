@@ -303,16 +303,8 @@ export class CaregiverComponent {
         this.submit()
         this.goToNextStep()
       }
-<<<<<<< HEAD
       console.log(this.currentQuestion)
       this.answers.at(this.currentQuestion).get('answer')?.reset(null);
-=======
-      if(this.currentQuestion < 14) {
-        this.currentQuestion ++;
-      }
-
-      
->>>>>>> d755d643ce728074c60d08942a89cc91361d14f7
     }
 
     nextQchatQuestion() {
