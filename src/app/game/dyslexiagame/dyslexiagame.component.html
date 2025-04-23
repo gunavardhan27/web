@@ -27,11 +27,9 @@
     <div class="result-info">
       <h4>Your Learning Strengths:</h4>
       <ul>
-        <li>✨ Methodical Processing</li>
-        <li>✨ Independent Thinking</li>
-        <li>✨ Unique Problem-Solving</li>
+        <li *ngFor="let strength of learningStrengths">{{ strength }}</li>
       </ul>
-    </div>
+    </div>    
 
     <div class="stats">
       <div class="stat">

@@ -105,6 +105,24 @@ export class DyslexiagameComponent implements OnInit {
     const total = this.responseTimes.reduce((a, b) => a + b, 0);
     return Math.round(total / this.responseTimes.length);
   }
+  
+  get learningStrengths(): string[] {
+    const acc = this.accuracy;
+    const time = this.averageResponseTime;
+    const strengths: string[] = [];
+  
+    if (acc >= 90) strengths.push("✨ Precision Under Pressure");
+    else if (acc >= 75) strengths.push("✨ Methodical Processing");
+    else strengths.push("✨ Growth-Oriented Learner");
+  
+    if (time < 1500) strengths.push("✨ Quick Cognitive Reflexes");
+    else if (time < 2500) strengths.push("✨ Balanced Processing Speed");
+    else strengths.push("✨ Thoughtful Decision Making");
+  
+    if (acc >= 80 && time < 2000) strengths.push("✨ Independent Thinking");
+  
+    return strengths;
+  }  
 
   tryAgain() {
     this.router.navigate(['/dyslexia_game']);
